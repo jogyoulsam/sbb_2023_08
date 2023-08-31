@@ -25,6 +25,9 @@ public class Question {
 
     private LocalDateTime createDate;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 }
+
+//mappedBy = "question" -> 얘네들이 답변을 저장하고 그 내용을 보여주는 역활을 한다.
+// 얘네들 쓰기 전에는 답변도 저장이 안됐고, 0개의 답변이 있다고만 계속 보여줬다.
