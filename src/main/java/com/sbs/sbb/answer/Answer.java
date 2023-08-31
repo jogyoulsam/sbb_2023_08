@@ -1,24 +1,30 @@
-package com.sbs.sbb;
+package com.sbs.sbb.answer;
 
+
+import com.sbs.sbb.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
-@Entity // question 테이블
-public class Question {
+@Entity // answer 테이블
+public class Answer {
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Integer id;
-
-    @Column(length = 200) // VARCHAR(200)
-    private String subject;
 
     @Column(columnDefinition = "TEXT") // TEXT
     private String content;
 
     private LocalDateTime createDate;
+
+    // private Integer questionId;
+    @ManyToOne
+    private Question question;
+    // question_id 라는 칼럼이 생김
+
 }
