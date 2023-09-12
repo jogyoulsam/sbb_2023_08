@@ -2,6 +2,7 @@ package com.sbs.sbb.answer;
 
 
 import com.sbs.sbb.question.Question;
+import com.sbs.sbb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,10 @@ import java.time.LocalDateTime;
 @Setter
 @Entity // answer 테이블
 public class Answer {
+
+    @ManyToOne
+    private SiteUser author;
+
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Integer id;
